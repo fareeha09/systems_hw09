@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <fcntl.h>
-
+#include <unistd.h>
+#include <string.h>
 /* open: */
 /* int open(const char *pathname, int flags); */
 /* int open(const char *pathname, int flags, mode_t mode);int open( */
@@ -28,15 +29,18 @@ ers to true. */
 								
 int main(){
 
-  //  int file = open();
+  int file = open("file.txt", O_RDWR);
 
-  char *buffer_a = malloc(100, sizeof(char));
+  char *buffer_a = malloc(sizeof(char));//malloc(100, sizeof(char));
   buffer[23] = '0';
   printf( "num of bytes: %d, bytes read: %s", read( file, buffer_a, 23), buffer);
 
   
-  char *buffer_b = malloc(100, sizeof(char));
+  char *buffer_b = malloc(sizeof(char));//malloc(100, sizeof(char));
   strcpy( buffer_b, "\nchicken nuggets\0");
   write( file, buffer_b, 16);
+  
+  //Returns a 0 upon success, and a -1 upon failure. It is important to check the return value, because some network errors are not returned until the file is closed.
+  if (close(file)<0) return 1;
   
 }
