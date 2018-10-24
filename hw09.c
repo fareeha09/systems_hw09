@@ -1,3 +1,6 @@
+#include <stdio.h> 
+#include <fcntl.h>
+
 /* open: */
 /* int open(const char *pathname, int flags); */
 /* int open(const char *pathname, int flags, mode_t mode);int open( */
@@ -24,4 +27,16 @@ ers to true. */
 /* S_IXOTH	Set execution rights for other users to true. */
 								
 int main(){
+
+  //  int file = open();
+
+  char *buffer_a = malloc(100, sizeof(char));
+  buffer[23] = '0';
+  printf( "num of bytes: %d, bytes read: %s", read( file, buffer_a, 23), buffer);
+
+  
+  char *buffer_b = malloc(100, sizeof(char));
+  strcpy( buffer_b, "\nchicken nuggets\0");
+  write( file, buffer_b, 16);
+  
 }
